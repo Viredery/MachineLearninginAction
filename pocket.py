@@ -57,13 +57,13 @@ if __name__ == '__main__':
     dataMat = loadDataSet2('pocketTrain.txt')
     X_test, y_test = loadDataSet('pocketTest.txt')
     totalErrorRate = 0
-    for _ in range(2000):
+    for _ in range(1000):
         np.random.shuffle(dataMat)
 	y_all = dataMat[:, -1]
 	X_all = dataMat[:, :-1]
 	y_all = y_all.astype(int)
-        weights, numUpdates = pocketAlgo(X_all, y_all, 1, 50)
+        weights, numUpdates = pocketAlgo(X_all, y_all, 1, 100)
         print errorCalc(weights, X_test, y_test)
         totalErrorRate = totalErrorRate + errorCalc(weights, X_test, y_test)
     
-    print "the average error is " + str(totalErrorRate / 2000)
+    print "the average error is " + str(totalErrorRate / 1000)
